@@ -14,7 +14,7 @@ export const AddressProvider = ({ children }) => {
       const response = await fetch(
         `${import.meta.env.VITE_API_BASE}${
           import.meta.env.VITE_API_ENDPOINT
-        }ip=${query}&apiKey=${import.meta.env.VITE_API_KEY}`
+        }apiKey=${import.meta.env.VITE_API_KEY}&ipAddress=${query}&`
       );
 
       if (!response.ok) {
@@ -23,6 +23,7 @@ export const AddressProvider = ({ children }) => {
 
       const result = await response.json();
       console.log(result);
+      setData(result);
     } catch (err) {
       setError(err.message);
     } finally {
@@ -31,7 +32,7 @@ export const AddressProvider = ({ children }) => {
   };
 
   return (
-    <AddressContext.Provider value={{ data, loading, error }}>
+    <AddressContext.Provider value={{ data, loading, error, fetchData }}>
       {children}
     </AddressContext.Provider>
   );
