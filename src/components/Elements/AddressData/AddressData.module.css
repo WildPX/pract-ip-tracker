@@ -1,0 +1,37 @@
+.address-data-container {
+  min-width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.address-data-list {
+  position: absolute;
+  /* left: 50%; */
+  /* bottom: 0; */
+  transform: translateY(50%);
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  gap: var(--spacing-xl);
+  background-color: var(--color-highlight);
+  padding: var(--spacing-lg);
+  border-radius: var(--spacing-md);
+  list-style: none;
+}
+
+@media screen and (max-width: 700px) {
+  .address-data-list {
+    flex-flow: column nowrap;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md) var(--spacing-md);
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .address-data-list {
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm);
+  }
+}

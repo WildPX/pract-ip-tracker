@@ -1,0 +1,37 @@
+.header {
+  padding: var(--spacing-md);
+  padding-bottom: 4rem;
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-md);
+  background: url("/src/assets/pattern-bg-desktop.png");
+  background-size: cover;
+  position: relative;
+  z-index: 1000;
+}
+
+.header h1 {
+  color: var(--color-highlight);
+  font-size: clamp(var(--font-size-h1-mobile), 7vw, var(--font-size-h1));
+  text-align: center;
+}
+
+@media screen and (max-width: 700px) {
+  .header {
+    padding-bottom: 7.5rem;
+  }
+
+  .header input {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .header {
+    background: url("/src/assets/pattern-bg-mobile.png");
+    padding-bottom: 6.5rem;
+  }
+}

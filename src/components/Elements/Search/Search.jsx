@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { FaGreaterThan } from "react-icons/fa";
+import { FaChevronRight } from "react-icons/fa";
 import { useAddress } from "../../../context/AddressContext";
+import classes from "./Search.module.css";
 
 function Search() {
   const [query, setQuery] = useState("");
-  const { data, fetchData } = useAddress();
+  const { fetchData } = useAddress();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -13,14 +14,15 @@ function Search() {
   };
 
   return (
-    <form onSubmit={(e) => handleSubmit(e)}>
+    <form onSubmit={(e) => handleSubmit(e)} className={classes.searchContainer}>
       <input
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Enter IP Address"
+        type="text"
       />
       <button type="submit">
-        <FaGreaterThan />
+        <FaChevronRight />
       </button>
     </form>
   );

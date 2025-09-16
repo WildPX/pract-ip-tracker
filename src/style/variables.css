@@ -2,6 +2,7 @@
   /* COLORS */
   --color-black-200: hsl(0, 0%, 17%);
   --color-black-100: hsl(0, 0%, 58%);
+  --color-highlight: #ffffff;
 
   /* FONTS */
   --font-family: "Rubik", sans-serif;
@@ -11,6 +12,8 @@
   --font-weight-regular: 500;
 
   --font-size-h1: 3rem;
+  --font-size-h1-tablet: 2rem;
+  --font-size-h1-mobile: 1.25rem;
 
   /* SPACING */
   --spacing-xs: 0.25rem;
@@ -22,4 +25,8 @@
   /* TRANSITION */
   --transition-regular: 0.3s;
   --transition-fast: 0.15s;
+
+  /* RESPONSIVE */
+  --max-screen-size-tablet: 640px;
+  --max-screen-size-phone: 375px;
 }

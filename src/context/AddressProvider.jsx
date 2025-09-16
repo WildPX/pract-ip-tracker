@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AddressContext } from "./AddressContext";
 
 export const AddressProvider = ({ children }) => {
@@ -6,7 +6,17 @@ export const AddressProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const fetchData = async (query) => {
+  // Caching
+  const cache = useRef({});
+
+  const fetchData = async (query = "") => {
+    // TODO: Has a bug when empty response and current IPs are different queries
+    if (cache.current[query]) {
+      setData(cache.current[query]);
+      setLoading(false);
+      return;
+    }
+
     try {
       setLoading(true);
       setError(false);
@@ -22,7 +32,8 @@ export const AddressProvider = ({ children }) => {
       }
 
       const result = await response.json();
-      console.log(result);
+
+      cache.current[query] = result;
       setData(result);
     } catch (err) {
       setError(err.message);
@@ -30,6 +41,10 @@ export const AddressProvider = ({ children }) => {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <AddressContext.Provider value={{ data, loading, error, fetchData }}>

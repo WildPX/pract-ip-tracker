@@ -1,0 +1,25 @@
+.data-item {
+  display: flex;
+  flex-flow: column nowrap;
+  /* gap: var(--spacing-xs); */
+}
+
+.data-item h2 {
+  color: var(--color-black-100);
+  font-size: 0.75rem;
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.data-item p {
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-black-200);
+}
+
+@media screen and (max-width: 700px) {
+  .data-item {
+    text-align: center;
+  }
+}

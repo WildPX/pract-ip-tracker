@@ -1,9 +1,11 @@
+import classes from "./DataItem.module.css";
+
 function DataItem({ title, text }) {
   return (
-    <div>
+    <li className={classes.dataItem}>
       <h2>{title}</h2>
       <p>{text}</p>
-    </div>
+    </li>
   );
 }
 export default DataItem;
