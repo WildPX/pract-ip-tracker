@@ -19,7 +19,7 @@ export const AddressProvider = ({ children }) => {
 
     try {
       setLoading(true);
-      setError(false);
+      setError(null);
 
       const response = await fetch(
         `${import.meta.env.VITE_API_BASE}${
@@ -28,7 +28,7 @@ export const AddressProvider = ({ children }) => {
       );
 
       if (!response.ok) {
-        throw new Error("Fetch failed");
+        throw new Error("Search failed");
       }
 
       const result = await response.json();
@@ -43,12 +43,18 @@ export const AddressProvider = ({ children }) => {
     }
   };
 
+  const clearError = () => {
+    setError(null);
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
 
   return (
-    <AddressContext.Provider value={{ data, loading, error, fetchData }}>
+    <AddressContext.Provider
+      value={{ data, loading, error, fetchData, clearError }}
+    >
       {children}
     </AddressContext.Provider>
   );
