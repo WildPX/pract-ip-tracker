@@ -5,7 +5,7 @@ import classes from "./Search.module.css";
 
 function Search() {
   const [query, setQuery] = useState("");
-  const { fetchData, setError } = useAddress();
+  const { loading, fetchData, setError } = useAddress();
 
   function isValidQuery(ip) {
     if (ip === "") return true;
@@ -32,7 +32,7 @@ function Search() {
         placeholder="Enter IP Address"
         type="text"
       />
-      <button type="submit">
+      <button type="submit" disabled={loading}>
         <FaChevronRight />
       </button>
     </form>
