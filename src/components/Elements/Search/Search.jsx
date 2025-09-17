@@ -10,11 +10,10 @@ function Search() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await fetchData(query);
-    // console.log(data);
   };
 
   return (
-    <form onSubmit={(e) => handleSubmit(e)} className={classes.searchContainer}>
+    <form onSubmit={(e) => handleSubmit(e)} className={classes.searchForm}>
       <input
         value={query}
         onChange={(e) => setQuery(e.target.value)}

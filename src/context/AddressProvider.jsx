@@ -34,6 +34,7 @@ export const AddressProvider = ({ children }) => {
       const result = await response.json();
 
       cache.current[query] = result;
+
       setData(result);
     } catch (err) {
       setError(err.message);

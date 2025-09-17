@@ -8,29 +8,40 @@
 
 .address-data-list {
   position: absolute;
-  /* left: 50%; */
-  /* bottom: 0; */
   transform: translateY(50%);
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
-  gap: var(--spacing-xl);
+  align-items: stretch;
+  gap: var(--spacing-md);
   background-color: var(--color-highlight);
   padding: var(--spacing-lg);
   border-radius: var(--spacing-md);
   list-style: none;
 }
 
+.divider {
+  width: 1px;
+  background-color: var(--color-black-100);
+  margin: 0 1rem;
+}
+
 @media screen and (max-width: 700px) {
   .address-data-list {
+    width: 70%;
     flex-flow: column nowrap;
     gap: var(--spacing-sm);
     padding: var(--spacing-md) var(--spacing-md);
+  }
+
+  .divider {
+    display: none;
   }
 }
 
 @media screen and (max-width: 375px) {
   .address-data-list {
+    width: 90%;
     gap: var(--spacing-xs);
     padding: var(--spacing-sm);
   }
