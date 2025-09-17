@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { AddressContext } from "./AddressContext";
+import { API_BASE, API_ENDPOINT, API_KEY } from "../const";
 
 export const AddressProvider = ({ children }) => {
   const [data, setData] = useState(null);
@@ -25,9 +26,7 @@ export const AddressProvider = ({ children }) => {
       setSuccess(null);
 
       const response = await fetch(
-        `${import.meta.env.VITE_API_BASE}${
-          import.meta.env.VITE_API_ENDPOINT
-        }apiKey=${import.meta.env.VITE_API_KEY}&ipAddress=${query}&`
+        `${API_BASE}${API_ENDPOINT}apiKey=${API_KEY}&ipAddress=${query}&`
       );
 
       if (!response.ok) {
