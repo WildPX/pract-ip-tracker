@@ -5,6 +5,7 @@ export const AddressProvider = ({ children }) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
 
   // Caching
   const cache = useRef({});
@@ -14,12 +15,14 @@ export const AddressProvider = ({ children }) => {
     if (cache.current[query]) {
       setData(cache.current[query]);
       setLoading(false);
+      setSuccess(true);
       return;
     }
 
     try {
       setLoading(true);
       setError(null);
+      setSuccess(null);
 
       const response = await fetch(
         `${import.meta.env.VITE_API_BASE}${
@@ -36,6 +39,7 @@ export const AddressProvider = ({ children }) => {
       cache.current[query] = result;
 
       setData(result);
+      setSuccess(true);
     } catch (err) {
       setError(err.message);
     } finally {
@@ -47,13 +51,26 @@ export const AddressProvider = ({ children }) => {
     setError(null);
   };
 
+  const clearSuccess = () => {
+    setSuccess(null);
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
 
   return (
     <AddressContext.Provider
-      value={{ data, loading, error, fetchData, clearError }}
+      value={{
+        data,
+        loading,
+        error,
+        success,
+        setError,
+        fetchData,
+        clearError,
+        clearSuccess,
+      }}
     >
       {children}
     </AddressContext.Provider>

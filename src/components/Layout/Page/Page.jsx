@@ -6,7 +6,7 @@ import { useAddress } from "../../../context/AddressContext";
 import { useEffect } from "react";
 
 function Page() {
-  const { error, clearError } = useAddress();
+  const { error, success, clearError, clearSuccess } = useAddress();
 
   useEffect(() => {
     if (error) {
@@ -14,6 +14,13 @@ function Page() {
     }
     clearError();
   }, [error, clearError]);
+
+  useEffect(() => {
+    if (success) {
+      toast.success("Search successful!");
+    }
+    clearSuccess();
+  }, [success, clearSuccess]);
 
   return (
     <div className={classes.pageContainer}>
