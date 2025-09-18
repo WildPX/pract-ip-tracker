@@ -25,9 +25,11 @@ export const AddressProvider = ({ children }) => {
       setError(null);
       setSuccess(null);
 
-      const response = await fetch(
-        `${API_BASE}${API_ENDPOINT}apiKey=${API_KEY}&ipAddress=${query}&`
-      );
+      // const response = await fetch(
+      //   `${API_BASE}${API_ENDPOINT}apiKey=${API_KEY}&ipAddress=${query}&`
+      // );
+
+      const response = await fetch(`${API_BASE}/geo-api?ipAddress=${query}`);
 
       if (!response.ok) {
         throw new Error("Search failed");
